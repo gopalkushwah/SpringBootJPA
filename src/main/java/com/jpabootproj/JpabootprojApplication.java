@@ -6,48 +6,45 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
-import com.jpabootproj.model.User;
-import com.jpabootproj.repository.UserRepository;
+import com.jpabootproj.model.Employee;
+import com.jpabootproj.repository.EmployeeRepository;
 
 @SpringBootApplication
 public class JpabootprojApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext applicationContext = SpringApplication.run(JpabootprojApplication.class, args);
-		UserRepository userRepository = applicationContext.getBean(UserRepository.class);
-	
 		
-//		List<User> findByName = userRepository.findByName("Satyam");
-//		findByName.forEach(e -> System.out.println(e));
+		EmployeeRepository employeeRepository = applicationContext.getBean(EmployeeRepository.class);
 		
 		
-//		List<User> findByAddress = userRepository.findByAddress("Bhopal");
-//		findByAddress.forEach(e -> System.out.println(e));
+//		INSERT
+//		employeeRepository.insertEmployee("Ram", "Bhopal", "54687841245", 45544.5454);
 		
-		
-//		List<User> findByAddressOrName = userRepository.findByAddressOrName("Bhopal", "Raju");
-//		findByAddressOrName.forEach(e -> System.out.println(e));
-//		System.out.println("----------------------------------------------------");
-
-//		List<User> findByAddressAndName = userRepository.findByAddressAndName("Bhopal", "Satyam");
-//		findByAddressAndName.forEach(e -> System.out.println(e));
-//		System.out.println("----------------------------------------------------");
-
-//		List<User> findByIdLessThan = userRepository.findByIdLessThan(4);
-//		findByIdLessThan.forEach(e -> System.out.println(e));
-//		System.out.println("----------------------------------------------------");
-
-//		List<User> findByIdLessThanEqual = userRepository.findByIdLessThanEqual(5);
-//		findByIdLessThanEqual.forEach(e -> System.out.println(e));
-//		System.out.println("----------------------------------------------------");
-
-//		List<User> findByIdGreaterThan = userRepository.findByIdGreaterThan(5);
-//		findByIdGreaterThan.forEach(e -> System.out.println(e));
-//		System.out.println("----------------------------------------------------");
+//		GET ALL
+//		List<Employee> all = employeeRepository.getAll();
 //		
-//		List<User> findByIdGreaterThanEqual = userRepository.findByIdGreaterThanEqual(5);
-//		findByIdGreaterThanEqual.forEach(e -> System.out.println(e));
-//		System.out.println("----------------------------------------------------");
+//		for(Employee emp : all) {
+//			System.out.println(emp);
+//		}
+		
+//		GET BY ID
+//		List<Employee> getEmployeeById = employeeRepository.getEmployeeById(2);
+//		for(Employee emp : getEmployeeById) {
+//			System.out.println(emp);
+//		}
+		
+		
+//		employeeRepository.updateEmployee("Ram", "Harda");
+		
+		
+//		employeeRepository.deleteEmployee("Ram");.
+		
+		
+//		native query 
+		List<Employee> employeeByNative = employeeRepository.getEmployeeByNative();
+		for(Employee e : employeeByNative)
+			System.out.println(e);
 	}
 
 }
