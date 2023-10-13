@@ -1,6 +1,7 @@
 package com.jpabootproj;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,22 +17,36 @@ public class JpabootprojApplication {
 		ApplicationContext applicationContext = SpringApplication.run(JpabootprojApplication.class, args);
 		UserRepository userRepository = applicationContext.getBean(UserRepository.class);
 		
-		User user1 = new User();
-		user1.setName("Ram");
-		user1.setAddress("Bhopal");
+		
+//		creating and saving data using jpa (insert)
+//		it will return the object which we are trying to save
+//		User user1 = new User();
+//		user1.setName("Ram");
+//		user1.setAddress("Bhopal");
+//		User save = userRepository.save(user1);
+//		System.out.println(save);
 		
 		
-		User user2 = new User();
-		user2.setName("Girraj");
-		user2.setAddress("Bhopal");
-		List<User> list = List.of(user1,user2);
 		
-		Iterable<User> saveAll = userRepository.saveAll(list);
+//		get operation --- getting a single object by its primary id
+//		Retrieves an entity by its id.
+//		Optional<User> findById = userRepository.findById(3);
+//
+////		If a value is present, returns the value, otherwise throws NoSuchElementException.
+//		User user = findById.get();
+//		System.out.println(user);
 		
-		saveAll.forEach(result -> {
-			System.out.println(result);
-		});
 		
+//		update operation -- updating the single object by its id
+//		User user = userRepository.findById(7).get();
+//		user.setName("Anish");
+//		User save = userRepository.save(user);
+//		System.out.println(save);
+		
+		
+//		delete operation 
+		User user = userRepository.findById(8).get();
+		userRepository.delete(user);
 	}
 
 }
