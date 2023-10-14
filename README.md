@@ -55,4 +55,5 @@
 //		False 			findByActiveFalse()									 … where x.active = false
 //
 //		IgnoreCase 		findByFirstnameIgnoreCase				 			… where UPPER(x.firstname) = UPPER(?1)
+
 		
