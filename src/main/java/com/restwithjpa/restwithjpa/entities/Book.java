@@ -1,10 +1,12 @@
 package com.restwithjpa.restwithjpa.entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Book {
@@ -15,18 +17,19 @@ public class Book {
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
-    private String auother;
-    @Column(nullable = false)
     private String description;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Author author;
 
     public Book() {
     }
 
-    public Book(int id, String name, String auother, String description) {
+    public Book(int id, String name, String description, Author author) {
         this.id = id;
         this.name = name;
-        this.auother = auother;
         this.description = description;
+        this.author = author;
     }
 
     public int getId() {
@@ -45,14 +48,6 @@ public class Book {
         this.name = name;
     }
 
-    public String getAuother() {
-        return auother;
-    }
-
-    public void setAuother(String auother) {
-        this.auother = auother;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -61,9 +56,17 @@ public class Book {
         this.description = description;
     }
 
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
     @Override
     public String toString() {
-        return "Book [id=" + id + ", name=" + name + ", auother=" + auother + ", description=" + description + "]";
+        return "Book [id=" + id + ", name=" + name + ", description=" + description + ", author=" + author + "]";
     }
 
 }
